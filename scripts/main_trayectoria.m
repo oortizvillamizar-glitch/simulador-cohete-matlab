@@ -12,7 +12,7 @@ y0 = [cfg.h0; cfg.v0]; % [altura_inicial [m]; velocidad_inicial [m/s]]
 % 3. Resolver el sistema de ecuaciones diferenciales con ode45
 % Detenemos la integracion si el cohete regresa al suelo (h <= 0) tras despegar
 opts = odeset('Events', @(t, y) evento_suelo(t, y), 'RelTol', 1e-6, 'AbsTol', 1e-8);
-[t, y] = ode45(@(t, y) dinamica_cohete(t, y, cfg), cfg.t_span, y0, opts);
+[t, y] = ode45(@(t, y) dinamica_cohete(t, y, cfg), cfg.g_span, y0, opts);
 
 h = y(:, 1); % Altura [m]
 v = y(:, 2); % Velocidad vertical [m/s]
